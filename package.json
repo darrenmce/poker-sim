@@ -19,5 +19,6 @@
     "main": "./lib/poker-sim.js",
     "engines": {
         "node": ">= 0.8.0"
-    }
+    },
+    "license" : "MIT"
 }
