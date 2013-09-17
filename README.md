@@ -3,6 +3,12 @@ poker-sim
 
 Node library that simulates a poker game and calculates winning percentages
 
+Dependencies
+---------
+
+poker-evaluator
+moment (not really needed, could be removed in future)
+
 USAGE:
 ---------
 
