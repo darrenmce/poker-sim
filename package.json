@@ -15,7 +15,7 @@
         "poker-evaluator":"0.2.0"
     },
     "devDependencies": {},
-    "main": "./lib/poker-sim.js",
+    "main": "poker-sim.js",
     "engines": {
         "node": ">= 0.8.0"
     },
