@@ -34,3 +34,4 @@ game.evalHands().printGame();
 
 //at any time you can return the JSON of the game status
 console.log(game.getGame());
+console.log(game.getGame().hands);

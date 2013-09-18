@@ -69,9 +69,12 @@ Hand.prototype = {
         });
     },
     valueOf: function () {
+        var self=this;
         return {
-            "name": this.name,
-            "hand": this.hand
+            "name": self.name,
+            "hand": self.hand.map(function (card) {
+                return self.CardUtil.cardString(card);
+            })
         };
     }
 
