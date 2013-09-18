@@ -1,6 +1,6 @@
 {
     "name": "poker-sim",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "A library to simulate poker games (holdem)",
     "homepage": "http://github.com/darrenmce/poker-sim",
     "author": {
@@ -12,8 +12,7 @@
         "url": "https://github.com/darrenmce/poker-sim.git"
     },
     "dependencies": {
-        "poker-evaluator":"0.2.0",
-        "moment": "~2.2.1"
+        "poker-evaluator":"0.2.0"
     },
     "devDependencies": {},
     "main": "./lib/poker-sim.js",

@@ -1,5 +1,4 @@
 var pokereval = require("poker-evaluator");
-var moment = require("moment");
 
 var cfg = {
     "handMax": 7,
@@ -152,7 +151,8 @@ Game.prototype = {
         //counter for simulated hands
         self.totalSimHands = 0;
 
-        var timer = +moment();
+        var dt = new Date();
+        var timer = dt.getTime();
 
         //evaluate hands (if no cards left to draw, calculate based on actuals)
         if (rem > 0) {
@@ -162,7 +162,8 @@ Game.prototype = {
         }
 
         //output evaluate duration
-        console.log('Evaluation took ' + moment.duration(+moment() - timer).asSeconds() + ' seconds.');
+        dt = new Date();
+        console.log('Evaluation took ' + (dt.getTime() - timer)/1000 + ' seconds.');
 
         //determine percentages
         self.hands.forEach(function (hand) {

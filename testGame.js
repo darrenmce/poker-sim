@@ -1,24 +1,4 @@
-poker-sim
-=========
-
-Node library that simulates a poker game and calculates winning percentages
-
-```
-npm install poker-sim
-```
-
-Dependencies
----------
-
-poker-evaluator
-
-moment (not really needed, could be removed in future)
-
-USAGE:
----------
-
-```js
-var pokerSim = require("poker-sim");
+var pokerSim = require("./poker-sim");
 
 var game = new pokerSim.Game();
 
@@ -54,9 +34,3 @@ game.evalHands().printGame();
 
 //at any time you can return the JSON of the game status
 console.log(game.getGame());
-```
-
-Notes:
----------
-
-Fairly untested, use at own risk or modify and make it better!
