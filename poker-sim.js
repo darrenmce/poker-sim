@@ -69,7 +69,7 @@ Hand.prototype = {
         });
     },
     valueOf: function () {
-        var self=this;
+        var self = this;
         return {
             "name": self.name,
             "hand": self.hand.map(function (card) {
@@ -166,7 +166,7 @@ Game.prototype = {
 
         //output evaluate duration
         dt = new Date();
-        console.log('Evaluation took ' + (dt.getTime() - timer)/1000 + ' seconds.');
+        console.log('Evaluation took ' + (dt.getTime() - timer) / 1000 + ' seconds.');
 
         //determine percentages
         self.hands.forEach(function (hand) {
@@ -232,11 +232,13 @@ Game.prototype = {
     //returns the JSON for the game
     getGame: function () {
         return {
-            "hands" : this.hands.map(function (hand) {
+            "hands": this.hands.map(function (hand) {
                 return hand.valueOf();
             }),
-            "community": this.community,
-            "eval" : this.eval
+            "community": this.community.map(function (card) {
+                return new CardUtil().cardString(card);
+            }),
+            "eval": this.eval
         };
     }
 
