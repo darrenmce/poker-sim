@@ -55,6 +55,10 @@ game.evalHands().printGame();
 //at any time you can return the JSON of the game status
 console.log(game.getGame());
 ```
+Extras:
+--------
+poker-sim.getGame (useful to send to the client)
+poker-sim.getSave (useful to save the game state, returns the options you need to feed into constructor to resume)
 
 Notes:
 ---------

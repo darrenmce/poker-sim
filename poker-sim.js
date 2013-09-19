@@ -80,20 +80,31 @@ Hand.prototype = {
 
 }
 
-var Game = function () {
-    this.hands = [];
-    this.cardsDealt = 0;
-    this.unturned = cfg.deck.slice(0);
-    this.turned = [];
-    this.community = [];
-    this.CardUtil = new CardUtil();
-    for (i = 0; i < Math.min(arguments.length, cfg.handsMax); i++) {
-        var hand = arguments[i];
-        var type = Object.prototype.toString.call(hand);
-        if (type === "[object Object]" && hand.hand) {
-            this.hands.push(hand);
-        }
+var Game = function (options) {
+    var self = this;
+    var opt = options || {};
+
+    self.hands = [];
+
+    self.cardsDealt = opt.cardsDealt || 0;
+    self.unturned = opt.unturned || cfg.deck.slice(0);
+    self.turned = opt.turned || [];
+    self.community = opt.community || [];
+
+    //process hands
+    opt.hands = opt.hands ? opt.hands : {};
+    if(opt.hands.length > 0) {
+        opt.hands.forEach(function(hand){
+            var newHand = new Hand(hand.name);
+            hand.hand.forEach(function(card){
+                newHand.addCard(card);
+            });
+            self.hands.push(newHand);
+        });
     }
+
+    self.CardUtil = new CardUtil();
+
 }
 
 Game.prototype = {
@@ -129,6 +140,7 @@ Game.prototype = {
             self.hands.forEach(function (hand) {
                 hand.addCard(self.drawRandom());
             });
+            self.cardsDealt++;
             return self;
         } else {
             return false;
@@ -240,6 +252,21 @@ Game.prototype = {
             }),
             "eval": this.eval
         };
+    },
+    //returns JSON for a save-state
+    getSave: function () {
+        return {
+            "hands": this.hands.map(function(hand){
+                return {
+                    "name": hand.name,
+                    "hand": hand.hand
+                }
+            }),
+            "community" : this.community,
+            "turned" : this.turned,
+            "unturned": this.unturned,
+            "cardsDealt": this.cardsDealt
+        }
     }
 
 }
